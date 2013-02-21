@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="DWU-W5-w16">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Stream Screen-->
+        <scene sceneID="R7p-aP-rWf">
+            <objects>
+                <viewController id="LMf-ef-b2E" customClass="StreamScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W5L-Vc-gWv">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="global_bgn.jpeg" id="FRL-Pe-JVF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="oWv-cr-Nzf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FD6-cW-GcZ"/>
+                    <connections>
+                        <outlet property="btnCompose" destination="Snj-CF-hWB" id="fgc-du-84Z"/>
+                        <outlet property="btnRefresh" destination="d12-ON-EYm" id="Jm4-fk-Bjo"/>
+                        <outlet property="listView" destination="oWv-cr-Nzf" id="1Se-07-fUX"/>
+                        <segue destination="LbA-iv-5eH" kind="push" identifier="ShowPhoto" id="xhj-Zp-1ey"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Lm-5U-75z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="camera" id="Snj-CF-hWB">
+                    <connections>
+                        <segue destination="QHZ-w9-Fl5" kind="push" identifier="PhotoScreen" id="x1s-La-RQs"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="refresh" id="d12-ON-EYm">
+                    <connections>
+                        <action selector="btnRefreshTapped" destination="LMf-ef-b2E" id="XLA-MF-au0"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="509" y="-229"/>
+        </scene>
+        <!--Photo Screen-->
+        <scene sceneID="srR-4F-vFO">
+            <objects>
+                <viewController id="QHZ-w9-Fl5" customClass="PhotoScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rw8-Mf-dRL">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="placeholder.png" id="k2O-nf-Kkb">
+                                <rect key="frame" x="10" y="84" width="300" height="389"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.85587211279999997" green="0.85587211279999997" blue="0.85587211279999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Photo title" minimumFontSize="17" id="QC1-tC-fbw">
+                                <rect key="frame" x="10" y="26" width="300" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="QHZ-w9-Fl5" id="CH4-LD-geE"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.75764142335766427" green="0.34209625912408759" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KdB-BN-2Zv"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="btnAction" destination="RpD-Dl-QEf" id="1I7-BM-27z"/>
+                        <outlet property="fldTitle" destination="QC1-tC-fbw" id="ai8-SH-2AY"/>
+                        <outlet property="photo" destination="k2O-nf-Kkb" id="esK-ui-MiU"/>
+                        <segue destination="Tap-8t-COH" kind="modal" identifier="ShowLogin" id="h1n-sa-8IU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Sh-Y8-vrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="action" id="RpD-Dl-QEf">
+                    <connections>
+                        <action selector="btnActionTapped:" destination="QHZ-w9-Fl5" id="FrD-hu-d1q"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="1162" y="-17"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="qhe-KI-gK0">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="DWU-W5-w16" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="5JJ-eK-BRS">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qVx-xu-zIz" kind="relationship" relationship="viewControllers" id="gHd-lm-DvZ"/>
+                        <segue destination="Etu-1Z-T9r" kind="relationship" relationship="viewControllers" id="urJ-Y2-nUU"/>
+                        <segue destination="Hcb-bC-yT9" kind="relationship" relationship="viewControllers" id="mO6-fb-Syv"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vrs-YE-eCM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-903" y="133"/>
+        </scene>
+        <!--Stream Photo Screen-->
+        <scene sceneID="2GX-G2-zqW">
+            <objects>
+                <viewController id="LbA-iv-5eH" customClass="StreamPhotoScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kcf-ND-aeq">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" id="rEh-bK-FVk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" text="Loading description..." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="CQp-O9-Cda">
+                                <rect key="frame" x="0.0" y="325" width="320" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="axk-K4-Jab"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="lblTitle" destination="CQp-O9-Cda" id="kgD-3s-g4e"/>
+                        <outlet property="photoView" destination="rEh-bK-FVk" id="vWC-p6-nJh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1h1-Ot-n9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1167" y="-703"/>
+        </scene>
+        <!--Login Screen-->
+        <scene sceneID="fBJ-kQ-iIn">
+            <objects>
+                <viewController id="Tap-8t-COH" customClass="LoginScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vIh-c2-2at">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="login_bgn.jpeg" id="LhQ-GJ-2A9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Login" lineBreakMode="tailTruncation" minimumFontSize="10" id="RBx-hp-lUn">
+                                <rect key="frame" x="104" y="64" width="112" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" id="3f0-yL-waM">
+                                <rect key="frame" x="56" y="93" width="208" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" id="XY8-l9-1wT">
+                                <rect key="frame" x="56" y="132" width="208" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LMh-NU-ZOG">
+                                <rect key="frame" x="80" y="171" width="161" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnLoginRegisterTapped:" destination="Tap-8t-COH" eventType="touchUpInside" id="ZZu-Zd-gd4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="or" lineBreakMode="tailTruncation" minimumFontSize="10" id="XGX-SX-MhV">
+                                <rect key="frame" x="150" y="216" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ujh-IN-IoQ">
+                                <rect key="frame" x="80" y="245" width="161" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnLoginRegisterTapped:" destination="Tap-8t-COH" eventType="touchUpInside" id="h0u-Iv-cdo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="I1T-kr-rcX"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="fldPassword" destination="XY8-l9-1wT" id="6ZW-od-HrJ"/>
+                        <outlet property="fldUsername" destination="3f0-yL-waM" id="Gye-he-pUU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qvp-V0-APV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1778" y="395"/>
+        </scene>
+        <!--Navigation Controller - Global-->
+        <scene sceneID="m0L-uG-mke">
+            <objects>
+                <navigationController id="qVx-xu-zIz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Global" image="27-planet.png" id="Tqa-7Z-97M"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="fBE-ob-dSv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ora-ZW-knx" kind="relationship" relationship="rootViewController" id="POP-05-r9u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="So2-hc-tgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-394" y="-234"/>
+        </scene>
+        <!--Navigation Controller - My Profile-->
+        <scene sceneID="M1K-Ah-OQz">
+            <objects>
+                <navigationController id="Etu-1Z-T9r" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Profile" image="111-user.png" id="jfx-GX-Okx"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Hda-8n-9jR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TmS-fg-Rzs" kind="relationship" relationship="rootViewController" id="V8Q-f4-uD6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="23E-xp-ZDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-368" y="418"/>
+        </scene>
+        <!--User Stream Screen-->
+        <scene sceneID="7C2-oS-6sm">
+            <objects>
+                <viewController id="VPP-by-YX5" customClass="UserStreamScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5d4-hC-TZy">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="E7m-Kf-sR0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.75764142335766427" green="0.34717153284671531" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="b9i-UN-ik0"/>
+                    <connections>
+                        <outlet property="btnCompose" destination="Snj-CF-hWB" id="WVs-IL-S4Y"/>
+                        <outlet property="btnRefresh" destination="d12-ON-EYm" id="fkb-vR-Ore"/>
+                        <outlet property="listView" destination="E7m-Kf-sR0" id="eKR-mS-WdX"/>
+                        <segue destination="3bW-k9-h2t" kind="push" identifier="UserShowPhoto" id="Jfs-Re-Dd9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fG3-cC-ZDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="refresh" id="VDQ-e9-nn6">
+                    <connections>
+                        <action selector="btnRefreshTapped" destination="VPP-by-YX5" id="kf8-Le-sRD"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="camera" id="Qpa-3o-n4u"/>
+            </objects>
+            <point key="canvasLocation" x="615" y="963"/>
+        </scene>
+        <!--User Stream Photo Screen-->
+        <scene sceneID="6w4-Yw-isQ">
+            <objects>
+                <viewController id="3bW-k9-h2t" customClass="UserStreamPhotoScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5h9-Cb-IeR">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" id="t5j-zt-rUx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" text="Loading description..." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="Og8-Yf-T9o">
+                                <rect key="frame" x="0.0" y="325" width="320" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="y6c-Yu-SS7"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="lblTitle" destination="Og8-Yf-T9o" id="Ufh-7z-StA"/>
+                        <outlet property="photoView" destination="t5j-zt-rUx" id="Q7y-bI-xZc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9qc-NA-V0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1113" y="951"/>
+        </scene>
+        <!--Global Tags Stream Screen-->
+        <scene sceneID="zHu-sb-b3e">
+            <objects>
+                <viewController id="Ora-ZW-knx" customClass="GlobalTagsStreamScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jER-Ak-76H">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="global_bgn.jpeg" id="5If-Fn-k5Y">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="hka-gm-m8y">
+                                <rect key="frame" x="-2" y="-6" width="325" height="466"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2H8-HR-B6O">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="vTN-rQ-spP">
+                            <connections>
+                                <action selector="btnRefreshCustom:" destination="Ora-ZW-knx" id="VWd-Sp-QPB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnCompose" destination="Snj-CF-hWB" id="QXa-yj-0C4"/>
+                        <outlet property="btnRefresh" destination="vTN-rQ-spP" id="28i-la-k7v"/>
+                        <outlet property="listView" destination="hka-gm-m8y" id="1Dp-Jr-WLf"/>
+                        <segue destination="LMf-ef-b2E" kind="push" identifier="ShowStreamforTag" id="hCH-sB-SCs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gzd-eB-J24" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="camera" id="cQf-Qq-fdk"/>
+                <barButtonItem systemItem="refresh" id="JtZ-gr-qjr">
+                    <connections>
+                        <action selector="btnRefreshTapped" destination="Ora-ZW-knx" id="px1-la-Yub"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="57" y="-363"/>
+        </scene>
+        <!--User Tags Stream Screen-->
+        <scene sceneID="MsK-RW-0Hi">
+            <objects>
+                <viewController id="TmS-fg-Rzs" customClass="UserTagsStreamScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Abr-zi-wVF">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="profile_bgn.jpg" id="A3M-F3-IXm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="rcM-OQ-G1K">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="254"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7iv-B8-fRu">
+                                <rect key="frame" x="20" y="361" width="116" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vON-mr-2qB">
+                                <rect key="frame" x="179" y="361" width="116" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m6V-Ds-hxi">
+                                <rect key="frame" x="20" y="338" width="116" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3bN-Ar-zNS">
+                                <rect key="frame" x="20" y="389" width="116" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="atH-vq-TKl">
+                                <rect key="frame" x="179" y="338" width="116" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYf-Yd-qLF">
+                                <rect key="frame" x="179" y="389" width="116" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7LM-5w-wQi">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="S6c-se-rvD">
+                            <connections>
+                                <action selector="btnRefreshTapped:" destination="TmS-fg-Rzs" id="sDS-mj-GPo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnCompose" destination="Snj-CF-hWB" id="YmE-vG-zHp"/>
+                        <outlet property="btnRefresh" destination="d12-ON-EYm" id="edE-hf-l66"/>
+                        <outlet property="labelTag1" destination="m6V-Ds-hxi" id="t4h-fi-r2K"/>
+                        <outlet property="labelTag2" destination="vON-mr-2qB" id="xCw-Rc-U0d"/>
+                        <outlet property="labelTag3" destination="3bN-Ar-zNS" id="6Yp-Tl-1QQ"/>
+                        <outlet property="labelTag4" destination="atH-vq-TKl" id="Ows-YW-EY7"/>
+                        <outlet property="labelTag5" destination="7iv-B8-fRu" id="SYp-Gy-DtL"/>
+                        <outlet property="labelTag6" destination="CYf-Yd-qLF" id="CG7-R7-ukh"/>
+                        <outlet property="listView" destination="rcM-OQ-G1K" id="4IY-v7-PfD"/>
+                        <segue destination="VPP-by-YX5" kind="push" identifier="UserStreamScreen" id="M8e-51-wbT"/>
+                        <segue destination="Tap-8t-COH" kind="modal" identifier="ShowLogin" id="Wlu-Dg-CZB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P9O-SD-DQe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="camera" id="Uew-Bo-KO7"/>
+                <barButtonItem systemItem="refresh" id="hD7-py-dXq">
+                    <connections>
+                        <action selector="btnRefreshTapped" destination="TmS-fg-Rzs" id="lMC-fl-4L7"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="87" y="669"/>
+        </scene>
+        <!--Navigation Controller - Arena-->
+        <scene sceneID="lPX-oR-Ht6">
+            <objects>
+                <navigationController id="Hcb-bC-yT9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Arena" image="134-viking.png" id="cd8-gZ-ZhQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Cdc-oV-qo4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="x8L-fx-0g7" kind="relationship" relationship="rootViewController" id="Ktk-qI-WJd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZjE-Fi-ipB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-849" y="1022"/>
+        </scene>
+        <!--Arena Screen-->
+        <scene sceneID="3go-7S-ahl">
+            <objects>
+                <viewController id="x8L-fx-0g7" customClass="ArenaScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RpN-Mo-Qvr">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="arena_bgn.jpg" id="DqV-96-LD1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Uw8-fU-Kfa">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OVH-7Z-JlD">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="b2X-4X-IGj">
+                            <connections>
+                                <action selector="btnRefreshTag:" destination="x8L-fx-0g7" id="qiS-zj-a3y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnCompose" destination="Snj-CF-hWB" id="oIb-71-ufI"/>
+                        <outlet property="btnRefresh" destination="d12-ON-EYm" id="k02-sl-UeU"/>
+                        <outlet property="listView" destination="Uw8-fU-Kfa" id="fEh-Ko-aag"/>
+                        <segue destination="LbA-iv-5eH" kind="push" identifier="ShowPhoto" id="u2q-H1-fR9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m9t-vj-5Fm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="camera" id="BMG-Ib-jiw"/>
+                <barButtonItem systemItem="refresh" id="ffX-Yc-2oS">
+                    <connections>
+                        <action selector="btnRefreshTapped" destination="x8L-fx-0g7" id="qT1-35-jzh"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="-314" y="1361"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="111-user.png" width="24" height="21"/>
+        <image name="134-viking.png" width="26" height="17"/>
+        <image name="27-planet.png" width="29" height="18"/>
+        <image name="arena_bgn.jpg" width="640" height="1136"/>
+        <image name="global_bgn.jpeg" width="400" height="320"/>
+        <image name="login_bgn.jpeg" width="640" height="960"/>
+        <image name="placeholder.png" width="300" height="300"/>
+        <image name="profile_bgn.jpg" width="640" height="1136"/>
+    </resources>
+    <classes>
+        <class className="ArenaScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ArenaScreen.h"/>
+            <relationships>
+                <relationship kind="action" name="btnRefreshTag:"/>
+                <relationship kind="outlet" name="listView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="GlobalTagsStreamScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GlobalTagsStreamScreen.h"/>
+            <relationships>
+                <relationship kind="action" name="btnRefreshCustom:"/>
+                <relationship kind="outlet" name="btnCompose" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnRefresh" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="listView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="LoginScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginScreen.h"/>
+            <relationships>
+                <relationship kind="action" name="btnLoginRegisterTapped:"/>
+                <relationship kind="outlet" name="fldPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="fldUsername" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PhotoScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoScreen.h"/>
+            <relationships>
+                <relationship kind="action" name="btnActionTapped:"/>
+                <relationship kind="outlet" name="btnAction" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="fldTitle" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="photo" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="StreamPhotoScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StreamPhotoScreen.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lblTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="photoView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="StreamScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StreamScreen.h"/>
+            <relationships>
+                <relationship kind="action" name="btnRefreshTapped"/>
+                <relationship kind="outlet" name="btnCompose" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnRefresh" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="listView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="UserStreamPhotoScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserStreamPhotoScreen.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lblTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="photoView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="UserStreamScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserStreamScreen.h"/>
+            <relationships>
+                <relationship kind="action" name="btnRefreshTapped"/>
+                <relationship kind="outlet" name="btnCompose" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnRefresh" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="listView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="UserTagsStreamScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserTagsStreamScreen.h"/>
+            <relationships>
+                <relationship kind="action" name="btnRefreshTapped:"/>
+                <relationship kind="outlet" name="labelTag1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTag2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTag3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTag4" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTag5" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTag6" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTagTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="listView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="u2q-H1-fR9"/>
+        <segue reference="Wlu-Dg-CZB"/>
+    </inferredMetricsTieBreakers>
+</document>
